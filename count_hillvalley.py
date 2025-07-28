@@ -1,4 +1,5 @@
-# Essa é uma solução pouquíssimo otimizada. Existe uma forma EXTREMAMENTE mais simples e otimizada de se fazer isso, e não é nada complicado. O detalhe está na seleção de um ponteiro/indexador do ponto inicial de um morro/vale.
+# Essa é uma solução pouquíssimo otimizada. Existe uma forma EXTREMAMENTE mais simples e otimizada de se fazer isso,
+#e não é nada complicado. O detalhe está na seleção de um ponteiro/indexador do ponto inicial de um morro/vale.
 
 def countHillValley(nums):
     """

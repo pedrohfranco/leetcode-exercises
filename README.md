@@ -6,3 +6,25 @@
 </div>
 
 <img src="https://miro.medium.com/v2/resize:fit:1008/1*VOQU8CuPG34Gsd1yJCadOQ.png" style="max-width: 50%" alt="leetcode"></img>
+
+# Explicações Resumidas
+
+## Add Two Numbers
+
+Vamos percorrer as listas ligadas. Enquanto iteramos por elas, construímos uma terceira lista, com cada nó representando a soma dos nós das outras duas, limitada por 10. Aquilo que cair fora do limite, devemos carregar para a próxima a soma, como um residual. Realizamos isso até todas as listas se exaurirem. Para que o programa acesse a nova lista ligada, retornamos o primeiro nó dela.
+
+## Count Hill-Valley
+
+Na minha solução, bem próxima de uma _brute force_, inicializo dois ponteiros ordenados, que vão caminhar a lista. A ideia é que, entre eles, sempre haja ou um vale ou um morro. Portanto, a iteração pela lista ocorre sob a constante verificação de uma subida ou descida. Os ponteiros são deslocados no começo de toda iteração, para nunca testarem regiões planas.
+
+Em uma melhor solução, iteramos linearmente pela lista. A cada ponto de descida ou subida que encontramos, verificamos se é um morro ou vale. Após, esse ponto é fixado por um ponteiro, sendo usado na próxima verificação. Esse processo é repetido até que a lista se esgote. É tremendamente mais fácil, intuitivo e otimizado que a solução anterior (O(n)).
+
+## Smallest Subarray with Maximum Bitwise OR
+
+A minha tentativa de solução se apresentou logicamente correta, mas mal otimizada, o que levou a um Timeout diante de um input muito grande. A solução funcional utiliza alguns malabarismos mentais. Construímos o arranjo dos menores tamanhos necessários para que os subarranjos atinjam o maior bitwise OR, percorrendo apenas uma vez cada número em `nums`. Algumas percepções para que a solução faça sentido:
+
+- O enunciado informa que o tamanho máximo do número é 10^9, o que implica que cada um tem, no máximo, 30 bits.
+- A operação OU é capaz apenas de acrescer a string de bits.
+- Ao iterar (com _i_) pelos números do último ao primeiro, e pelos bits (com _bit_index_) de cada um desses números, sabemos que o máximo possível do OU para o subarranjo, entre o final de `nums` (n-1, inclusivo) e a posição atual da iteração (_i_), só tende a crescer.
+- Encontrar o tamanho do menor subarranjo se trata de encontrar a maior entre as distâncias da posição atual (_i_) e a posição das últimas ocorrências de cada um dos 30 bits, até aquela iteração. Isso acontece por causa da propriedade do OU apenas crescer o máximo. Se queremos o menor tamanho para atingir o máximo, então se trata de encontrar o tamanho do intervalo necessário para que o maior número de bits possíveis sejam 1, porque, para qualquer intervalo maior, mais nenhum bit será adicionado ou removido.
+- A observação anterior justifica a iteração do fim para o começo. No final de `nums`, o máximo é menor, porque há menos ocorrências de bits. Na medida com que nos aproximamos do começo, existem mais "ativações" de bits no decorrer do arranjo. Porém, mesmo que o mesmo bit se ative entre diferentes números, como queremos o menor subarranjo, pouco importa o que aconteceu depois da última ocorrência, até o momento _i_.

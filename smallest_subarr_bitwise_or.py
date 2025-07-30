@@ -9,11 +9,11 @@ class Solution(object):
         """
 
         def bitwise_or(a, b): return a | b
-        _max = reduce(bitwise_or, nums)
         
         sizes = []
         n = len(nums)
         for i in range(n):
+            _max = reduce(bitwise_or, nums[i:])
             for j in range(i+1, n+1):
                 if reduce(bitwise_or, nums[i:j]) == _max:
                     break

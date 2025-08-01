@@ -32,3 +32,11 @@ A minha tentativa de solução se apresentou logicamente correta, mas mal otimiz
 ## Longest Subarray with Maximum Bitwise AND
 
 Tremendamente mais fácil que o anterior. A ideia é retornar o tamanho do maior subarranjo, cuja operação de bit E seja a maior possível. A operação E tem a característica que ela só é capaz de decrescer um número, porque, entre um bit ativo e outro inativo, ela sempre opta pelo inativo. Ou seja, o máximo do arranjo original já se trata do máximo da operação E para algum subarranjo. Sabendo qual é esse máximo, basta contar o maior número de repetições contíguas desse máximo dentro do arranjo. Essa sequência de repetições é o subarranjo que procuramos. Disso, basta verificar qual é a maior das contagens de subarranjos.
+
+## Bitwise ORs Subarray
+
+A resolução mais simples tem complexidade quadrática e o LeetCode não roda. O problema, no final, é armazenar o estado das operações de OU até o presente momento, de forma que possamos iterar pelos resultados anteriores gerados numa passagem contígua pelo arranjo. Só precisamos iterar pelos números únicos gerados até o momento, porque OU é associativo e não acresce para bits já ativos. Ou seja, vamos gerando um conjunto que representa os números únicos até o momento (estado atual), a cada novo índice percorrido no arranjo original. Eventualmente, o estado atual converge para o estado desejado (todos os números únicos).
+
+## Pascal Triangle
+
+A única situação em que você pode ter alguma dificuldade por ele, é caso você não souber como um triângulo de Pascal funciona, e o LeetCode faz até o trabalho de animar como que os números progridem nele. Esse exercício foi um ALÍVIO em relação esses últimos, feito em 5 minutinhos.
